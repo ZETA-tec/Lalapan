@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="Image/icon.jpeg" type="image/x-icon" />
+    <title>LALAPN MURAH REZEKI</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#input-stok">Input Stok Barang</a></li>
+        <li><a href="#penjualan">Penjualan</a></li>
+        <li><a href="#penjualan-manual">Penjualan Manual</a></li>
+        <li><a href="#total-penjualan">Total Penjualan</a></li>
+      </ul>
+    </nav>
+
+    <!-- Input Stok Barang -->
+    <section id="input-stok">
+      <h1>Input Stok Barang</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Barang</th>
+            <th>Jumlah Barang</th>
+            <th>Harga Barang</th>
+          </tr>
+        </thead>
+        <tbody id="stok-table-body"></tbody>
+      </table>
+      <button onclick="addRow()">Tambah Barang</button>
+      <button onclick="exportToExcel('stok')">Export Excel</button>
+    </section>
+
+    <!-- Penjualan -->
+    <section id="penjualan">
+      <h1>Penjualan</h1>
+      <label>Nama Barang:</label>
+      <select id="nama-barang">
+        <option value="">Pilih Barang</option>
+      </select>
+      <label>Jumlah:</label>
+      <input type="number" id="jumlah-barang" />
+      <button onclick="sellItem()">Jual Barang</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Barang</th>
+            <th>Jumlah Barang</th>
+            <th>Harga Total</th>
+          </tr>
+        </thead>
+        <tbody id="penjualan-table-body"></tbody>
+      </table>
+    </section>
+
+    <!-- Penjualan Manual -->
+    <section id="penjualan-manual">
+      <h1>Penjualan Manual</h1>
+      <label>Nama Barang:</label>
+      <select id="manual-nama-barang">
+        <option value="Aqua">Aqua</option>
+        <option value="Es teh">Es teh</option>
+        <option value="Es Jeruk">Es Jeruk</option>
+        <option value="Nasi">Nasi</option>
+        <option value="Tempe">Tempe</option>
+        <option value="Tahu">Tahu</option>
+        <option value="Terong">Terong</option>
+      </select>
+      <label>Jumlah:</label>
+      <input type="number" id="manual-jumlah-barang" step="0.5" />
+      <label>Harga Satuan:</label>
+      <input type="number" id="manual-harga-barang" />
+      <button onclick="sellManualItem()">Jual Barang Manual</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Barang</th>
+            <th>Jumlah Barang</th>
+            <th>Harga Total</th>
+          </tr>
+        </thead>
+        <tbody id="penjualan-manual-table-body"></tbody>
+      </table>
+    </section>
+
+    <!-- Total Penjualan -->
+    <section id="total-penjualan">
+      <h1>Total Penjualan</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Barang</th>
+            <th>Jumlah Barang</th>
+            <th>Total Harga</th>
+          </tr>
+        </thead>
+        <tbody id="total-penjualan-body"></tbody>
+      </table>
+      <p>Total Penjualan: <span id="grand-total"></span></p>
+      <button onclick="exportToExcel('penjualan')">Export Excel</button>
+      <button onclick="resetData()">Reset Data</button>
+    </section>
+
+    <!-- Notifikasi -->
+    <div id="notification" class="notification">
+      <span id="notification-message"></span>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  </body>
+</html>
